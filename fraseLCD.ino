@@ -31,10 +31,14 @@ int screenHeight = 2;
 String line1 = " Not TOday le ganara a union gaymin";
 // line2 = static
 String line2 = " Einstein";
+String linea3 = " Esta es la segunda linea largaaa";
+String linea4 = " Pronto";
 
 // just some reference flags
-int stringStart, stringStop = 0;
+int stringStart, stringStop, stringStart2, stringStop2, stringStart3, stringStop3  = 0;
 int scrollCursor = screenWidth;
+int scrollCursor2 = screenWidth;
+int scrollCursor3 = screenWidth;
 
 // most of the part is pretty basic
 void setup() {
@@ -46,10 +50,34 @@ void loop() {
   lcd.print(line1.substring(stringStart,stringStop));
   delay(100);
   Casa();
+  if(stringStart2==0){
+    lcd.clear();
+  }
   lcd.clear();
   if(stringStart <= stringStop){
     lcd.setCursor(0,1);
     lcd.print(line2);
+  }
+  if(stringStart >= stringStop){
+    lcd.clear();
+    lcd.setCursor(scrollCursor2, 0);
+    lcd.print(linea3.substring(stringStart2,stringStop2));
+//    delay(0);
+    if(stringStart2 == 0 && scrollCursor2 > 0){
+      scrollCursor2--;
+      stringStop2++;
+    } 
+    else if (stringStop2 == linea3.length() && scrollCursor2 == 0) {
+      stringStart2++;
+    }
+    else {
+      stringStart2++;
+      stringStop2++;
+    }
+    if(stringStart2 <= stringStop2){
+      lcd.setCursor(0,1);
+      lcd.print(linea4);
+    }
   }
 }
 
@@ -60,10 +88,11 @@ boolean Casa(){
     } 
     else if (stringStop == line1.length() && scrollCursor == 0) {
       stringStart++;
-    } /* Vuelve a inicializar el Código
-    else if (stringStart == stringStop){
-      stringStart = stringStop = 0;
-      scrollCursor = screenWidth;
+    } //Codigo
+    /*else if (stringStart == stringStop){
+       
+      
+    //Codigo  
     }*/
     else {
       stringStart++;
