@@ -1,11 +1,8 @@
 /*
- Will help scroll just one line in LCD
+Will help scroll just one line in LCD
  The other will be static.
- 
  In this case 1st line: scrolling and 2nd line: static
- 
  Reference: http://arduino.cc/en/Tutorial/LiquidCrystal
- 
  The circuit:
  * LCD RS pin to digital pin 12
  * LCD Enable pin to digital pin 11
@@ -17,7 +14,7 @@
  * 10K resistor:
  * ends to +5V and ground
  * wiper to LCD VO pin (pin 3)
-*/
+ */
 
 // include the library
 #include <LiquidCrystal.h>
@@ -31,13 +28,9 @@ int screenHeight = 2;
 
 // the two lines
 // line1 = scrolling
-String line1 = " Si buscas resultados distintos, no hagas siempre lo mismo";
+String line1 = " Not TOday le ganara a union gaymin";
 // line2 = static
-String line2 = " Albert Einstein";
-String line3 = " Si quieres tener éxito, promete todo y no cumplas nada";
-String line4 = " Napoleón Bonaparte";
-String line5 = " El saber es la parte principal de la felicidad";
-String line6 = " Socrates";
+String line2 = " Einstein";
 
 // just some reference flags
 int stringStart, stringStop = 0;
@@ -54,18 +47,25 @@ void loop() {
   lcd.setCursor(0, 1);
   lcd.print(line2);
   delay(100);
+  Casa(); 
   lcd.clear();
-  if(stringStart == 0 && scrollCursor > 0){
-    scrollCursor--;
-    stringStop++;
-  } else if (stringStart == stringStop){
-    stringStart = stringStop = 0;
-    scrollCursor = screenWidth;
-  } else if (stringStop == line1.length() && scrollCursor == 0) {
-    stringStart++;
-  } else {
-    stringStart++;
-    stringStop++;
-  }
-  lcd.clear();
- }
+}
+
+boolean Casa(){
+    if(stringStart == 0 && scrollCursor > 0){
+      scrollCursor--;
+      stringStop++;
+    } 
+    else if (stringStop == line1.length() && scrollCursor == 0) {
+      stringStart++;
+    } /*
+    else if (stringStart == stringStop){
+      stringStart = stringStop = 0;
+      scrollCursor = screenWidth;
+    }*/
+    else {
+      stringStart++;
+      stringStop++;
+    }
+  
+}
