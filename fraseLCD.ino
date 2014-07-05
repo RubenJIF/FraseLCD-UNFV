@@ -44,11 +44,13 @@ void setup() {
 void loop() {
   lcd.setCursor(scrollCursor, 0);
   lcd.print(line1.substring(stringStart,stringStop));
-  lcd.setCursor(0, 1);
-  lcd.print(line2);
   delay(100);
-  Casa(); 
+  Casa();
   lcd.clear();
+  if(stringStart <= stringStop){
+    lcd.setCursor(0,1);
+    lcd.print(line2);
+  }
 }
 
 boolean Casa(){
@@ -58,7 +60,7 @@ boolean Casa(){
     } 
     else if (stringStop == line1.length() && scrollCursor == 0) {
       stringStart++;
-    } /*
+    } /* Vuelve a inicializar el Código
     else if (stringStart == stringStop){
       stringStart = stringStop = 0;
       scrollCursor = screenWidth;
@@ -67,5 +69,4 @@ boolean Casa(){
       stringStart++;
       stringStop++;
     }
-  
 }
