@@ -1,11 +1,11 @@
 /*
 * Disposición de pines
-* LCD RS pin to digital pin 12
-* LCD Enable pin to digital pin 11
-* LCD D4 pin to digital pin 5
-* LCD D5 pin to digital pin 4
-* LCD D6 pin to digital pin 3
-* LCD D7 pin to digital pin 2
+* LCD RS pin to digital pin 7
+* LCD Enable pin to digital pin 8
+* LCD D4 pin to digital pin 9
+* LCD D5 pin to digital pin 10
+* LCD D6 pin to digital pin 11
+* LCD D7 pin to digital pin 12
 */
 #include <LiquidCrystal.h>
 
