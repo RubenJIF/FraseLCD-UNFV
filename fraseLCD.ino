@@ -59,7 +59,6 @@ void loop() {
     lcd.clear();
     lcd.setCursor(scrollCursor2, 0);
     lcd.print(line3.substring(stringStart2,stringStop2));
-// delay(0);
     if(stringStart2 == 0 && scrollCursor2 > 0){
       scrollCursor2--;
       stringStop2++;
